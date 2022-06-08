@@ -1,0 +1,67 @@
+.modal-content {
+    border-radius: 50%;
+    width: 600px;
+    height: 600px;
+    border: 15px solid #000;
+    font-family: Nunito;
+}
+
+.tipoletra {
+    font-family: Nunito;
+}
+
+.columnaa {
+    position: relative;
+    width: 22%;
+    float: left;
+    height: auto;
+    border: 0.01px solid !important;
+    border-radius: 5px;
+    text-align: center;
+
+    ion-text {
+        font-size: 0.8rem;
+        text-align: center;
+        font-family: Nunito;
+
+    }
+}
+
+.columnau {
+    position: relative;
+    width: 22%;
+    float: left;
+    height: auto;
+    border: 0.01px solid !important;
+    border-radius: 5px;
+    text-align: center;
+    
+    ion-text {
+        font-size: 0.8rem;
+        text-align: center;
+        font-family: Nunito;
+
+    }
+}
+.columna2 {
+
+    height: auto;
+    border: 0.5px solid !important;
+    background-color: azure;
+    text-align: center;
+    border-radius: 5px;
+
+    ion-text {
+        font-size: 0.8rem;
+        text-align: center;
+        font-family: Nunito;
+
+    }
+}
+
+.articulos {
+
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3%;
+}

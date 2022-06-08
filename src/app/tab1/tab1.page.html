@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Calendario
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+  
+
+  <ion-row class="ion-align-items-center">
+    <ion-col sizeSm="9.5" sizeLg="9.5">
+      <ion-searchbar placeholder="Pedido..." inputmode="text" type="text" showCancelButton="always" [(ngModel)]="searchTerm"></ion-searchbar>
+    </ion-col>
+    <ion-col sizeSm="2.5" sizeLg="2.5" class="selector">     
+          <ion-item>
+            <ion-label>Estado Del Pedido</ion-label>
+            <ion-select (ionChange)="setbyEvByStatus($event)" interface="popover" multiple="false" class="tipoletra">
+              <ion-select-option value="NoAsg">No Asignado, Sin Facturar</ion-select-option>
+              <ion-select-option value="Asig">Asignado, Sin Facturar</ion-select-option>
+              <ion-select-option value="NoAsgFac">Facturado, Sin Asignar</ion-select-option>
+              <ion-select-option value="Fact">Facturado</ion-select-option>
+              <ion-select-option value="all">Todos</ion-select-option>
+             
+            </ion-select>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div class="leftSide">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Eventos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-datetime class="calendario" displayFormat="DD-MM-YYYY"  presentation="date" color="secondary" [(ngModel)]="miPedido.dia" (click)=" getWeek(this.miPedido.dia)" (click)="llamadaTest()" ></ion-datetime>
+  
+
+</div>
+
+
+<div class="rightSide">
+
+  <ion-grid class="grider">
+    
+    <ion-row >
+      <ion-col *ngFor="let item of misPedidos"  class="cfecha">
+        <ion-text>{{item.dia}}</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-col *ngFor="let item2 of misPedidos "  class="columna">
+        <ion-row *ngFor="let item3 of item2.eventos | filter:searchTerm" >
+          <ion-col  (click)="openModal(item3)" class="columna1">
+            <div *ngIf="item3.isTransportista ==true && item3.isFacturado==true" class="columnaVerde">
+              <ion-text ><p></p>{{item3.nombre}} <p></p>{{item3.transportista}} <p ></p></ion-text>
+            </div>
+            
+            <div *ngIf="item3.isTransportista ==true && item3.isFacturado==false" class="columnaNaranja">
+              <ion-text ><p></p>{{item3.nombre}} <p ></p>{{item3.transportista}} <p ></p></ion-text>
+            </div>
+
+            <div *ngIf="item3.isTransportista ==false && item3.isFacturado==true" class="columnaAmarilla">
+              <ion-text ><p></p>{{item3.nombre}} <p ></p>{{item3.transportista}} <p ></p></ion-text>
+            </div>
+
+            <div *ngIf="item3.isTransportista ==false && item3.isFacturado==false" class="columnaBlanca">
+              <ion-text ><p></p>{{item3.nombre}} <p ></p>{{item3.transportista}} <p ></p></ion-text>
+            </div>
+
+          </ion-col>
+      </ion-row>
+      </ion-col>
+      
+    </ion-row>
+    
+   
+    </ion-grid>
+  
+  </div>
+
+</ion-content>
